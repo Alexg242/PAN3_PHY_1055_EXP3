@@ -1,4 +1,4 @@
-# code courtesy of Adam Dempsey
+# code courtesy of Adam Dempseys
 # modified for PHY1055 by Oisín Creaner
 import matplotlib.pyplot as plt
 import numpy as np
