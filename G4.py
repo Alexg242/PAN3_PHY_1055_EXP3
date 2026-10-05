@@ -8,6 +8,7 @@ Created on Sun Oct  4 17:22:13 2026
 
 
 import matplotlib.pyplot as plt
+import matplotlib.colors
 import numpy as np
 from scipy import integrate
 
@@ -29,7 +30,7 @@ def main():
 
     plt.xlabel('x')
     plt.ylabel('dx')
-    plt.title('G4: Collection of Population Model Derrivations:' + r'$\frac{dx}{dt} = x\prime = rx(1 - \frac{x}{K})$')
+    plt.title('G4: Collection of Population Model Derrivations: ' + r'$\frac{dx}{dt} = x\prime = rx(1 - \frac{x}{K})$')
     plt.axhline(y=0, color="k")
     plt.legend()
 
@@ -39,6 +40,54 @@ if __name__ == '__main__':
     main()
 plt.show()
 
+
+#%%
+
+r = 1
+K = 100
+
+
+def main2():
+    r = 1 
+    plt.close('all')
+    plt.figure()
+    x = np.linspace(-10, K*1.1,101)
+    dx = r*x*(1 - x/100)
+    plt.plot(x, dx, label="K = " + str(K))  # plot field as quiver
+    
+    arrowsx = []
+    arrowsy = []
+    yvals = []
+    c = []
+    
+    for i in dx:
+        if i > 0:
+            arrowsx.append(1)
+            arrowsy.append(0)
+            yvals.append(0)
+            c.append('#FF0000')
+        if i < 0:
+            arrowsx.append(-1)
+            arrowsy.append(0)
+            yvals.append(0)
+            c.append('#0000FF')
+
+        if i == 0:
+            arrowsx.append(0)
+            arrowsy.append(0)
+            yvals.append(0)
+            c.append('#000000')
+
+            
+    plt.quiver(x, yvals, arrowsx, arrowsy, pivot='tail', scale = 35, color = c)
+    
+    plt.xlabel('x')
+    plt.ylabel('dx')
+    plt.title('G4: Population Model Derrivation With flow Respresentation: ' + r'$\frac{dx}{dt} = x\prime = rx(1 - \frac{x}{K})$')
+    plt.axhline(y=0, color="k")
+    plt.legend()
+    
+main2()
 #%%
 
 def pop(t, y, r, K):
@@ -81,7 +130,7 @@ def loop():
         
     for i in rs:
         
-        lfun = lambda t, y, : pop(t, y, r=i, K=100)
+        lfun = lambda t, y, : pop(t, y, r=i, K=125  )
 
         
         result = integrate.solve_ivp(fun=lfun,  # The function defining the derivative
@@ -99,6 +148,6 @@ def loop():
 
 loop()
 plt.xlabel('x')
-plt.ylabel('dx')
+plt.ylabel('y')
 plt.title('G4: Collection of Population:' + r'$\frac{dx}{dt} = x\prime = rx(1 - \frac{x}{K})$')
 plt.legend()
