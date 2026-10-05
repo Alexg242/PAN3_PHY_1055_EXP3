@@ -14,7 +14,7 @@ def main():
     coords = np.linspace(-3, 3, 21)
     x, y = np.meshgrid(coords, coords)
     dx = y
-    dy = -0.2*y-(2**2)*x
+    dy = -0.5*y-(1**2)*x
     plt.figure(figsize=(6,6))
     plt.gca().set_aspect('equal', adjustable='box')  # Make plot box square
     plt.xlabel('x')
