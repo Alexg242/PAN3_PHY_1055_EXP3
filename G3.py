@@ -19,7 +19,7 @@ def main():
     plt.gca().set_aspect('equal', adjustable='box')  # Make plot box square
     plt.xlabel('x')
     plt.ylabel('y')
-    plt.title('G3: 2D Vector field Damped Harmonic Osccilator: $f(x,y)=(y, -\omega^2 x)$')
+    plt.title('G3: 2D Vector field Damped Harmonic Osccilator: $f(x,y)=(y, yb -\omega^2 x)$')
     plt.quiver(x, y, dx, dy)  # plot field as quiver
     plt.streamplot(x, y, dx, dy)
     plt.show()

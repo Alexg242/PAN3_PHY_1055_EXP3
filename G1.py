@@ -16,13 +16,13 @@ def main():
     x, y = np.meshgrid(np.linspace(0, 2 * np.pi, 101), np.linspace(0, 2* np.pi, 101))
     print(x, y)
     vx = np.cos(x)*y
-    vy = np.sin(y)*x
+    vy = np.sin(x)*x
     plt.figure(figsize=(6, 6))
     plt.gca().set_aspect('equal', adjustable='box')  # Make plot box square
     plt.xlabel('x')
     plt.ylabel('y')
-    plt.title('G1: Quiver Plot Of Vx = y*cos(x), Vy = x*sin(y)')
-    plt.quiver(x, y, vx, vy, pivot='mid', label='$v_x$ = $y$cos($x$), $v_y$ =$x$sin($y$)')
+    plt.title('G1: Quiver Plot Of Vx = y*cos(x), Vy = x*sin(x')
+    plt.quiver(x, y, vx, vy, pivot='mid', label='$v_x$ = $y$cos($x$), $v_y$ =$x$sin($x$)')
     plt.legend()
     plt.show()
 
